@@ -1,0 +1,88 @@
+
+/* -------------------------------- */
+ /* MOBILE */
+/* -------------------------------- */
+
+@media screen and (max-width: 549px) {
+  .deck {
+    width: 400px;
+    min-height: 410px;
+  }
+
+  .deck .card {
+    width: 70px;
+    height: 70px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .score-panel {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .stars,
+  .timer {
+    display: block;
+  }
+
+}
+
+
+
+/* -------------------------------- */
+ /* TABLET */
+/* -------------------------------- */
+
+@media screen and (min-width: 550px) {
+  .deck {
+    width: 500px;
+    min-height: 510px;
+  }
+
+  .deck .card {
+    width: 90px;
+    height: 90px;
+  }
+
+  .score-panel {
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .stars,
+  .timer {
+    display: block;
+  }
+}
+
+
+/* -------------------------------- */
+ /* DESKTOP */
+/* -------------------------------- */
+
+@media screen and (min-width: 1024px) {
+  .deck {
+    width: 660px;
+    min-height: 680px;
+  }
+
+  .deck .card {
+    height: 125px;
+    width: 125px;
+  }
+
+  .stars,
+  .timer {
+    display: inline-block;
+  }
+
+  .timer {
+    width: 60px;
+    margin-left: 15px;
+    margin-right: 45px;
+    display: inline-block;
+  }
+}

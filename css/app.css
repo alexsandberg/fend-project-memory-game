@@ -51,6 +51,10 @@ h1 {
     margin: 0 0 3em;
 }
 
+.deck.hide {
+  display: none;
+}
+
 .deck .card {
     height: 125px;
     width: 125px;
@@ -63,10 +67,19 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+
+    perspective: 1000px;
+    position: relative;
+    transition: transform 0.3s;
+    transform-style: preserve-3d;
+}
+
+.deck .card-back {
+    transform: rotateY(180deg);
 }
 
 .deck .card.open {
-    transform: rotateY(0);
+    transform: rotateY(180deg);
     background: #02b3e4;
     cursor: default;
 }
@@ -81,6 +94,39 @@ h1 {
     font-size: 33px;
 }
 
+.deck .card.match,
+.deck .card.match .card-back {
+    animation-name: pop;
+    animation-duration: 800ms;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes pop {
+  0% {transform: skew(10deg, 10deg) scale(0.2);}
+  20% {transform: scale(1.2)}
+  50% {transform: skew(-10deg, -10deg);}
+  100% {transform: skew(0deg, 0deg) scale(1);}
+}
+
+
+.deck .card.no-match,
+.deck .card.no-match .card-back {
+  animation-name: shake;
+  animation-duration: 800ms;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  background: rgb(240,65,0);
+}
+
+@keyframes shake {
+  0% {transform: rotate(20deg);}
+  50% {transform: rotate(-20deg);}
+  100% {transform: rotate(0deg);}
+}
+
+
+
 /*
  * Styles for the Score Panel
  */
@@ -89,6 +135,10 @@ h1 {
     text-align: left;
     width: 345px;
     margin-bottom: 10px;
+}
+
+.score-inner {
+  display: inline-block;
 }
 
 .score-panel .stars {
@@ -106,4 +156,83 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+/* .timer {
+  width: 60px;
+  margin-left: 15px;
+  margin-right: 15px;
+  display: inline-block;
+} */
+
+/*
+* style for win page
+*/
+
+.win-page {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
+}
+
+.win-content {
+  position: absolute;
+  align-items: center;
+  text-align: center;
+  top:40%;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.win-pop {
+  animation-name: pop-up;
+  animation-duration: 400ms;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes pop-up {
+  0% {transform: scale(0.1);}
+  50% {transform: scale(1.3);}
+  100% {transform: scale(1.0);}
+}
+
+.win-page.hide {
+  display: none;
+}
+
+.win-head {
+  font-size: 2em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.win-text {
+  font-size: 1.4em;
+}
+
+.play-again {
+  width: 160px;
+  height: 60px;
+  line-height: 60px;
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background: #02ccba;
+  border-radius: 20px;
+}
+
+.play-again:hover {
+  cursor: pointer;
+}
+
+.button-text {
+  color: #fff;
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 1.4em;
 }
